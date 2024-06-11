@@ -1,7 +1,5 @@
 <?php
 
-require_once 'app/database.php';
-
 class User {
 
     public $username;
@@ -50,7 +48,9 @@ class User {
 		} else {
 			if(isset($_SESSION['failedAuth'])) {
 				$_SESSION['failedAuth'] ++; //increment
-			} else {
+        echo "This is unsuccessful attempt number " . $_SESSION['failedAuth'] . ".";
+			}
+      else {
 				$_SESSION['failedAuth'] = 1;
 			}
 			header('Location: /login');
