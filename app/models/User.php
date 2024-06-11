@@ -33,13 +33,17 @@ class User {
          * $this->auth = true;
          */
 		$username = strtolower($username);
+    // Check if data is requested.
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      $username = $_REQUEST['username'];
+      $password = $_REQUEST['password'];
 		$db = db_connect();
         $statement = $db->prepare("select * from users WHERE username = :name;");
         $statement->bindValue(':name', $username);
         $statement->execute();
         $rows = $statement->fetch(PDO::FETCH_ASSOC);
 		
-		if (password_verify($password, $rows['password'])) {
+		if (password_verify($password, $rows['password_hash'])) {
 			$_SESSION['auth'] = 1;
 			$_SESSION['username'] = ucwords($username);
 			unset($_SESSION['failedAuth']);
