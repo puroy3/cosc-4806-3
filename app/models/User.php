@@ -1,5 +1,7 @@
 <?php
 
+require_once 'app/database.php';
+
 class User {
 
     public $username;

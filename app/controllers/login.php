@@ -11,7 +11,14 @@ class Login extends Controller {
 			$password = $_REQUEST['password'];
 		
 			$user = $this->model('User');
-			$user->authenticate($username, $password); 
+			if ($user->authenticate($username, $password)){
+				header('Location: /home');
+				exit;
+			}
+			else {
+				header('Location: /login');
+				exit;
+			}
     }
 
 }
