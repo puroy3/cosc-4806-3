@@ -22,6 +22,9 @@
 			</div>
             <br>
 		    <button type="submit" class="btn btn-primary">Login</button>
+						<br>
+						<br>
+				<p><a href="/create.php"> Create an Account here </a></p>
 		</fieldset>
 		</form> 
 	</div>
