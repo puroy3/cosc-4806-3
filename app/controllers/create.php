@@ -29,6 +29,7 @@ class Create extends Controller {
         }
         else { 
         if ($user->create_user($username, $password)) {
+          unset($_SESSION['failedAuth']);
           $_SESSION['created_account'] = "Account was created. Login to the system.";
           header('Location: /login');
           die();
