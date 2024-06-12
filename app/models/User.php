@@ -30,14 +30,11 @@ class User {
       // Connect to database.
       $db = db_connect();
       // Check if the username already exists in the database by querying database.
-      $statement = $db->prepare("select * from users where username = '$username'");
+      $statement = $db->prepare("select * from users where username = :username");
+      $statement->bindValue(':username', $username);
       $statement->execute();
-      // Check if any matches occur.
-      if ($statement->fetch()) {
-        // If matches occur, then the username is already taken, so print the message.
-        $message_text = "This username is already taken. Choose a different one.";
-        $this->view('create/index');
-    }
+      // Check if any matches occur and return either true or false.
+      return $statement->fetch() ? true : false;
     }
     public function authenticate($username, $password) {
         /*

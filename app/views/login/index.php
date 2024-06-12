@@ -10,7 +10,7 @@
 
 	<?php
 	if (isset($_SESSION['failedAuth'])) {
-		echo "Unsuccessful attempt number " . $_SESSION['failedAuth'] . ".";
+		echo "Unsuccessful attempt number " . $_SESSION['failedAuth'] . ". ";
 	}
 	if (isset($_SESSION['created_account'])) {
 		echo $_SESSION['created_account'];

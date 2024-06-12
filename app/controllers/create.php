@@ -13,20 +13,19 @@ class Create extends Controller {
         $password2 = $_REQUEST['password2'];
 
         $user = $this->model('User');
-        $message_text = '';
         
         // Check if password length is less than 11.
         if (strlen($password) < 11) {
           // If less, print the message.
-          $message_text = "Password has to be at minimum 11 characters.";
+          $_SESSION['message_text'] = "Password has to be at minimum 11 characters.";
         }
         // Check if the two inputted passwords match.
         else if ($password !== $password2) {
           // If they don't, print the message.
-          $message_text = "Passwords don't match.";
+          $_SESSION['message_text'] = "Passwords don't match.";
         }
-        elseif ($user->usernameExists($username)) {
-          $message_text = "This username is already taken. Choose a different one.";
+        else if ($user->usernameExists($username)) {
+          $_SESSION['message_text'] = "This username is already taken. Choose a different one.";
         }
         else { 
         if ($user->create_user($username, $password)) {
@@ -35,13 +34,11 @@ class Create extends Controller {
           die();
         }
         else {
-            $message_text = "Account was not created. Try again.";
+            $_SESSION['message_text'] = "Account was not created. Try again.";
         }
     }
-        if (!empty($message_text)) {
-          echo $message_text;
-          $this->view('create/index');
-        }
+        header('Location: /create/index');
+        exit;
   }
       else {
       $this->view('create/index');

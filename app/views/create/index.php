@@ -16,8 +16,9 @@
 
     <h1>Signup Form</h1>
     <?php
-    if (!empty($message_text)) {
-      echo $message_text;
+    if (isset($_SESSION['message_text'])) {
+      echo $_SESSION['message_text'];
+      unset($_SESSION['message_text']); 
     }
 ?>
     <form action="/create/create" method="POST">
