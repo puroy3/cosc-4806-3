@@ -8,11 +8,17 @@
         </div>
     </div>
 
+	<?php
+	if (isset($_SESSION['failedAuth'])) {
+		echo "Unsuccessful attempt number " . $_SESSION['failedAuth'] . ".";
+	}
+	?>
 <div class="row">
     <div class="col-sm-auto">
 		<form action="/login/verify" method="post" >
 		<fieldset>
 			<div class="form-group">
+				<br>
 				<label for="username">Username</label>
 				<input required type="text" class="form-control" name="username">
 			</div>
