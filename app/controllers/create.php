@@ -30,7 +30,7 @@ class Create extends Controller {
         }
         else { 
         if ($user->create_user($username, $password)) {
-          $message_text = "Account was created. Press login.";
+          $_SESSION['created_account'] = "Account was created. Login to the system.";
           header('Location: /login');
           die();
         }
@@ -40,8 +40,8 @@ class Create extends Controller {
     }
         if (!empty($message_text)) {
           echo $message_text;
+          $this->view('create/index');
         }
-        $this->view('create/index');
   }
       else {
       $this->view('create/index');

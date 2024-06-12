@@ -24,7 +24,7 @@ class User {
       $hash = password_hash($password, PASSWORD_DEFAULT);
       // Create an SQL statement to insert the new user into the database using the username and the password hash.
       $statement = $db->prepare("INSERT into users (username, password_hash) VALUES ('$username', '$hash')");
-      $statement->execute();
+      return $statement->execute();
     }
     public function usernameExists($username) {
       // Connect to database.

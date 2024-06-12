@@ -12,6 +12,10 @@
 	if (isset($_SESSION['failedAuth'])) {
 		echo "Unsuccessful attempt number " . $_SESSION['failedAuth'] . ".";
 	}
+	if (isset($_SESSION['created_account'])) {
+		echo $_SESSION['created_account'];
+		unset($_SESSION['created_account']);
+	}
 	?>
 <div class="row">
     <div class="col-sm-auto">
