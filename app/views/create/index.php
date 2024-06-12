@@ -1,7 +1,7 @@
+<?php require_once 'app/views/templates/headerPublic.php'?>
 <!DOCTYPE html>
 <html>
   <head>
-    <?php require_once 'app/views/templates/headerPublic.php'?>
     <main role="main" class="container">
         <div class="page-header" id="banner">
             <div class="row">

@@ -20,13 +20,24 @@ class User {
 
     public function create_user($username, $password) {
       $db = db_connect();
-      // Create an SQL statement to insert the new user into the database using the username and the password hash.
-      $statement = $db->prepare("INSERT into users (username, password_hash) VALUES ('$username', '$hash')");
       // Hash the password.
       $hash = password_hash($password, PASSWORD_DEFAULT);
+      // Create an SQL statement to insert the new user into the database using the username and the password hash.
+      $statement = $db->prepare("INSERT into users (username, password_hash) VALUES ('$username', '$hash')");
       $statement->execute();
     }
-
+    public function usernameExists($username) {
+      // Connect to database.
+      $db = db_connect();
+      // Check if the username already exists in the database by querying database.
+      $statement = $db->prepare("select * from users where username = '$username'");
+      $statement->execute();
+      // Check if any matches occur.
+      if ($statement->fetch()) {
+        // If matches occur, then the username is already taken, so print the message.
+        echo "This username is already taken. Choose a different one.";
+    }
+    }
     public function authenticate($username, $password) {
         /*
          * if username and password good then
