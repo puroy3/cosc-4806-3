@@ -13,32 +13,35 @@ class Create extends Controller {
         $password2 = $_REQUEST['password2'];
 
         $user = $this->model('User');
-
+        $message_text = '';
+        
         // Check if password length is less than 11.
         if (strlen($password) < 11) {
           // If less, print the message.
-          echo "Password has to be at minimum 11 characters.";
-          $this->view('create/index');
+          $message_text = "Password has to be at minimum 11 characters.";
         }
         // Check if the two inputted passwords match.
         else if ($password !== $password2) {
           // If they don't, print the message.
-          echo "Passwords don't match.";
-          $this->view('create/index');
+          $message_text = "Passwords don't match.";
         }
-        else if ($user->usernameExists($username)) {
-          echo "This username is already taken. Choose a different one.";
+        elseif ($user->usernameExists($username)) {
+          $message_text = "This username is already taken. Choose a different one.";
         }
         else { 
         if ($user->create_user($username, $password)) {
-          echo "Account was created. Press login.";
+          $message_text = "Account was created. Press login.";
           header('Location: /login');
           die();
         }
         else {
-          echo "Account was not created. Try again.";
+            $message_text = "Account was not created. Try again.";
         }
     }
+        if (!empty($message_text)) {
+          echo $message_text;
+        }
+        $this->view('create/index');
   }
       else {
       $this->view('create/index');

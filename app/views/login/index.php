@@ -23,6 +23,7 @@
 				<input required type="text" class="form-control" name="username">
 			</div>
 			<div class="form-group">
+				<br>
 				<label for="password">Password</label>
 				<input required type="password" class="form-control" name="password">
 			</div>

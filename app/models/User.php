@@ -35,7 +35,8 @@ class User {
       // Check if any matches occur.
       if ($statement->fetch()) {
         // If matches occur, then the username is already taken, so print the message.
-        echo "This username is already taken. Choose a different one.";
+        $message_text = "This username is already taken. Choose a different one.";
+        $this->view('create/index');
     }
     }
     public function authenticate($username, $password) {

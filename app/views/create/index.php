@@ -15,9 +15,12 @@
   <body>
 
     <h1>Signup Form</h1>
-
-    <form method="post">
-      
+    <?php
+    if (!empty($message_text)) {
+      echo $message_text;
+    }
+?>
+    <form action="/create/create" method="POST">
       <!-- Ask for 3 things: Username-->
       <label for="username">Username:</label>
       <br>
@@ -36,7 +39,7 @@
       <input type="password" id="password2" name="password2" required>
       <br>
       <br>
-      <input type="submit" value="Create">
+      <button type="submit">Create</button>
       <br>
       <br>
     </form>
