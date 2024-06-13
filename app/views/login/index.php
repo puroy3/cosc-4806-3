@@ -16,6 +16,10 @@
 		echo $_SESSION['created_account'];
 		unset($_SESSION['created_account']);
 	}
+		if (isset($_SESSION['locked_text'])) {
+			echo $_SESSION['locked_text'];
+			unset($_SESSION['locked_text']);
+		}
 	?>
 <div class="row">
     <div class="col-sm-auto">

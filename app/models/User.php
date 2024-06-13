@@ -43,6 +43,18 @@ class User {
       $statement->bindValue(':attempt', $attempt);
       $statement->execute();
     }
+    public function locked($username) {
+      // Connect to database.
+      $db = db_connect();
+      $sixtySeconds = date('Y-m-d H:i:s', time() - 60);
+      $statement = $db->prepare("select count(*) as count_number from log where username = :username and attempt = 'bad' and time >= :sixtySeconds");
+      $statement->bindValue(':username', $username);
+      $statement->bindValue(':sixtySeconds', $sixtySeconds);
+      $statement->execute();
+      $badAttempts = $statement->fetch(PDO::FETCH_ASSOC);
+      // Return true if >= 3 failed attempts.
+      return $badAttempts['count_number'] >= 3;
+    }
     public function authenticate($username, $password) {
         /*
          * if username and password good then
@@ -51,6 +63,10 @@ class User {
 		$username = strtolower($username);
     // Check if data is requested.
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+      if ($this->locked($username)) {
+        $_SESSION['locked_text'] = " Account is locked for 60 seconds.";
+        exit;
+      }
       $username = $_REQUEST['username'];
       $password = $_REQUEST['password'];
 		$db = db_connect();
