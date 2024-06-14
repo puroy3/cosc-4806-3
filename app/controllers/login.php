@@ -13,7 +13,6 @@ class Login extends Controller {
 			$user = $this->model('User');
 
 			if ($user->locked($username)) {
-				$_SESSION['failedAuth']++;
 				$_SESSION['locked_text'] = " Account is locked for 60 seconds.";
 				header('Location: /login');
 				exit;
