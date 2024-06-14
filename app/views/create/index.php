@@ -17,7 +17,7 @@
     
     <?php
     if (isset($_SESSION['message_text'])) {
-      echo "<p class='text-center'>" . $_SESSION['message_text'] . "</p>";
+      echo "<div class='alert alert-danger d-inline-block text-center'>" . $_SESSION['message_text'] . "</div>";
       unset($_SESSION['message_text']); 
     }
 ?>
@@ -34,7 +34,7 @@
       <div class="form-group">
       <br>
       <!-- Password -->
-      <label for="password">Enter a Password with at least 11 characters:</label>
+      <label for="password">Enter a Password with <mark>at least 11 characters:</mark></label>
       <br>
       <input class="form-control" type="password" id="password" name="password" required>
       </div>
@@ -47,7 +47,7 @@
       </div>
       <br>
       <div class="text-center">
-      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="submit" class="btn btn-dark btn-sm">Create</button>
       </div>
       <br>
     </form>

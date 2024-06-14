@@ -3,7 +3,7 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="text-center">You are not logged in</h2>
+                <h2 class="display-5 text-center">You are not logged in</h2>
 							<h1 class="text-center">Login Page</h1>
             </div>
         </div>
@@ -11,14 +11,14 @@
 
 	<?php
 	if (isset($_SESSION['failedAuth'])) {
-		echo "<p class='text-center'>Unsuccessful attempt number " . $_SESSION['failedAuth'] . ".</p>";
+		echo "<div class='alert alert-danger d-inline-block text-center text-align-center'>Unsuccessful attempt number " . $_SESSION['failedAuth'] . ".</div>";
 	}
 	if (isset($_SESSION['created_account'])) {
-		echo "<p class='text-center'>" . $_SESSION['created_account'] . "</p>";
+		echo "<div class='alert alert-success d-inline-block text-center text-align-center'>" . $_SESSION['created_account'] . "</div>";
 		unset($_SESSION['created_account']);
 	}
 		if (isset($_SESSION['locked_text'])) {
-			echo "<p class='text-center'>" . $_SESSION['locked_text'] . "</p>";
+			echo "<div class='alert alert-danger d-inline-block text-center'>" . $_SESSION['locked_text'] . "</div>";
 			unset($_SESSION['locked_text']);
 		}
 	?>
@@ -38,7 +38,7 @@
 			</div>
             <br>
 			<div class="text-center">
-		    <button type="submit" class="btn btn-primary">Login</button>
+		    <button type="submit" class="btn btn-dark btn-sm">Login</button>
 			</div>
 						<br>
 				<p class="text-center"><a href="/create/index"> Create an Account here </a></p>
