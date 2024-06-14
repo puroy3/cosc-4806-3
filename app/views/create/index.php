@@ -14,13 +14,14 @@
             </div>
         </div>
     </div>
-    
+    <div style="display: flex; align-items: center; justify-content: center;"> 
     <?php
     if (isset($_SESSION['message_text'])) {
       echo "<div class='alert alert-danger d-inline-block text-center'>" . $_SESSION['message_text'] . "</div>";
       unset($_SESSION['message_text']); 
     }
 ?>
+      </div>
 <div class="row justify-content-center">
   <div class="col-sm-auto">
     <form action="/create/create" method="POST">
@@ -29,21 +30,21 @@
       <!-- Ask for 3 things: Username-->
       <label for="username">Username:</label>
       <br>
-      <input class="form-control" type="text" id="username" name="username" required>
+      <input class="form-control" type="text" id="username" name="username" required placeholder="username">
       </div>
       <div class="form-group">
       <br>
       <!-- Password -->
       <label for="password">Enter a Password with <mark>at least 11 characters:</mark></label>
       <br>
-      <input class="form-control" type="password" id="password" name="password" required>
+      <input class="form-control" type="password" id="password" name="password" required placeholder="password">
       </div>
       <div class="form-group">
       <br>
       <!-- Confirm Password -->
       <label for="password2">Confirm Password:</label>
       <br>
-      <input class="form-control" type="password" id="password2" name="password2" required>
+      <input class="form-control" type="password" id="password2" name="password2" required placeholder="matching password">
       </div>
       <br>
       <div class="text-center">

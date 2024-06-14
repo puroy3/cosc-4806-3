@@ -3,8 +3,8 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>Assignment 3</h1>
-                <p> Welcome, <?=$_SESSION['username'] ?></p>
+                <h2 class="display-5 text-center">Assignment 3</h2>
+                <h1> Welcome, <?=$_SESSION['username'] ?></h1>
                 <p class="lead"> <?= date("F jS, Y"); ?></p>
             </div>
         </div>

@@ -3,7 +3,8 @@
     <div class="page-header" id="banner">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h1>You are at a secret page</h1>
+                    <h1 class="display-5 text-center">You are at a secret page!</h1>
+                <h1> <?=$_SESSION['username'] ?>, SHH!</h1> 
                 <p class="lead"> <?= date("F jS, Y"); ?></p>
             </div>
         </div>
